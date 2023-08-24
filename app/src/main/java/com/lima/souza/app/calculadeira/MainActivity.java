@@ -255,12 +255,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void calculate(String text) {
-        char lastCharacter = text.charAt(text.length() - 1);
-        if (Character.isDigit(lastCharacter) || lastCharacter == ')') {
-            try{
-                double result = MathExpressionEvaluator.evaluateMathExpression(text);
-                displayTextView.setText(String.valueOf(result));
-            }catch(IllegalArgumentException e){}
+        if(text != null && !text.isEmpty()){
+            char lastCharacter = text.charAt(text.length() - 1);
+            if (Character.isDigit(lastCharacter) || lastCharacter == ')') {
+                try{
+                    double result = MathExpressionEvaluator.evaluateMathExpression(text);
+                    displayTextView.setText(String.valueOf(result));
+                }catch(IllegalArgumentException e){}
+            }
         }
     }
 }
